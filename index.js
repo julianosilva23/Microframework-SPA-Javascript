@@ -1,19 +1,17 @@
 const router = new Router();
-import Home from '/static/app/js/home.js'
-
-const basePath = 'static/app';
+import Home from '/js/home.js'
 
 function run() {
       const app = $("#app");
 
-      router.get('/about', function(req) {
+      router.get('/about', () => {
             app.html("About - Me");
       })
 
-      router.get('/home', function(req) {
+      router.get('/home', () => {
             Home.init({
                   app,
-                  html: basePath+'/home.html'
+                  html: 'home.html'
             });
       })
 

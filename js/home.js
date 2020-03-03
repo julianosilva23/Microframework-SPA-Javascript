@@ -1,10 +1,14 @@
-class Home {
-    init({app, html}) { 
+import Default from './default.js';
 
-        $(app).load(html);
-        $(app).data("class", this);
+class Home extends Default {
+ 
+    init({app, html}) {
 
-        $(document).on("click", "#home", this.submitForm);
+        this.render(app, html);
+
+        this.events = [
+            $(app).on("click", "#home", this.submitForm)
+        ]
     }
 
     submitForm(e) {
@@ -12,25 +16,6 @@ class Home {
         e.preventDefault();
     
     }
-
-    destroy() {
-        $(document).off("click", "#home", this.submitForm);
-    }
 }
 
 export default new Home;
-
-
-class Default {
-    constructor() {
-
-    }
-
-    init() {
-
-    }
-
-    destroy() {
-        
-    }
-}
